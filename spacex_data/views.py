@@ -19,6 +19,10 @@ def fetch_spacex_launches():
     return []
 
 
+def add_two_numbers(a, b):
+    return a + b
+
+
 def categorize_launches(launches):
     successful = list(
         filter(lambda x: x['success'] and not x['upcoming'], launches))
