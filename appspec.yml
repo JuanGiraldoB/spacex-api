@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
  - source: .
-   destination: /home/ec2-user/django-web-scrapper-aws-docker
+   destination: /home/ec2-user/spacex-api
    overwrite: true
 hooks:
   AfterInstall:
