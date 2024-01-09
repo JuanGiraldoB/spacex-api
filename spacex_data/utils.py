@@ -1,8 +1,9 @@
 import requests
 from datetime import datetime
+from django.core.paginator import Paginator
 
 def fetch_spacex_launches():
-    url = "https://api.spacexdata.com/v4/launches"
+    url = "https://api.spacexdata.com/v5/launches"
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -27,6 +28,13 @@ def categorize_launches(launches):
         'upcoming': upcoming,
     }
 
+
+def get_paginated_launches(launch, page_number, per_page):
+    paginator = Paginator(launch, per_page=per_page)  # Set the number of items per page
+    page_obj = paginator.get_page(page_number)  # Get the requested page number
+    page_obj.adjusted_elided_pages = paginator.get_elided_page_range(page_number, on_each_side=1, on_ends=1)
+
+    return page_obj
 
 def convert_unix_to_ymd(launches):
     for launch in launches.values():
