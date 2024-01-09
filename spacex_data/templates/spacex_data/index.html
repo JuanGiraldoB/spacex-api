@@ -1,42 +1,42 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<h1>SpaceX page_obj</h1>
+<h1>SpaceX Launches</h1>
 
 <ul class="nav nav-tabs">
 	<li class="nav-item">
-		<a class="nav-link {{active_successful_tab|default:''}}" href="{% url 'terms-by-page-successful' 1 %}">Successful</a>
+		<a class="nav-link {{active_successful_tab|default:''}}" href="{% url successful.url 1 %}">Successful</a>
 	</li>
-	<li class="nav-item"><a class="nav-link {{active_failed_tab|default:''}}" href="{% url 'terms-by-page-failed' 1 %}">Failed</a></li>
-	<li class="nav-item"><a class="nav-link {{active_upcoming_tab|default:''}}" href="{% url 'terms-by-page-upcoming' 1 %}">Upcoming</a></li>
+	<li class="nav-item"><a class="nav-link {{active_failed_tab|default:''}}" href="{% url failed.url 1 %}">Failed</a></li>
+	<li class="nav-item"><a class="nav-link {{active_upcoming_tab|default:''}}" href="{% url upcoming.url 1 %}">Upcoming</a></li>
 </ul>
 
 
 <div class="tab-content">
 	<div id="successful" class="container tab-pane {{active_successful_tab|default:'fade'}}">
-		{% for launch in page_obj_successful %}
+		{% for launch in successful.page_obj %}
 		
 			{% include 'spacex_data/snippets/launch_card.html' with launch=launch%}
 		
 		{% endfor %} 
 
-		{% include 'spacex_data/snippets/pagination.html' with page_obj=page_obj_successful url_name=successful_url %}
+		{% include 'spacex_data/snippets/pagination.html' with page_obj=successful.page_obj url_name=successful.url %}
 	</div>
 	
 	<div id="failed" class="container tab-pane {{active_failed_tab|default:'fade'}}">
-		{% for launch in page_obj_failed %}
+		{% for launch in failed.page_obj %}
 			{% include 'spacex_data/snippets/launch_card.html' with launch=launch%}
 		{% endfor %} 
 
-		{% include 'spacex_data/snippets/pagination.html' with page_obj=page_obj_failed url_name=failed_url %}
+		{% include 'spacex_data/snippets/pagination.html' with page_obj=failed.page_obj url_name=failed.url %}
 	</div>
 	
 	<div id="upcoming" class="container tab-pane {{active_upcoming_tab|default:'fade'}}">
-		{% for launch in page_obj_upcoming %}
+		{% for launch in upcoming.page_obj %}
 			{% include 'spacex_data/snippets/launch_card.html' with launch=launch%}
 		{% endfor %} 
 
-		{% include 'spacex_data/snippets/pagination.html' with page_obj=page_obj_upcoming url_name=upcoming_url %}
+		{% include 'spacex_data/snippets/pagination.html' with page_obj=upcoming.page_obj url_name=upcoming.url %}
 	</div>
 </div>
 

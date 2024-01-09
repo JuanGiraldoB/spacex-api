@@ -24,12 +24,18 @@ def paginate_launches(request, page_number, active_tab='active'):
     page_obj_upcoming = get_paginated_launches(all_launches['upcoming'], upcoming_page, PER_PAGE)
 
     context = {
-        'page_obj_successful': page_obj_successful,
-        'successful_url': "terms-by-page-successful",
-        'page_obj_failed': page_obj_failed,
-        'failed_url': "terms-by-page-failed",
-        'page_obj_upcoming': page_obj_upcoming,
-        'upcoming_url': "terms-by-page-upcoming",
+        'successful': {
+            'page_obj': page_obj_successful,
+            'url': "terms-by-page-successful",
+        },
+        'failed': {
+            'page_obj': page_obj_failed,
+            'url': "terms-by-page-failed",
+        },
+        'upcoming': {
+            'page_obj': page_obj_upcoming,
+            'url': "terms-by-page-upcoming",
+        },
         f'active_{active_tab}_tab': 'active'
     }
 
