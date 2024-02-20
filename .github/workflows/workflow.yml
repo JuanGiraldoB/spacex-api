@@ -51,7 +51,7 @@ jobs:
         run: |
           # Assuming the Deployment Group is already setup
           aws deploy create-deployment \
-            --application-name spacex \
+            --application-name spacex-code-deploy-app \
             --deployment-group-name spacex-deploy-group \
             --deployment-config-name CodeDeployDefault.OneAtATime \
             --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
