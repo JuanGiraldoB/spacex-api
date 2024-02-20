@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=3wfo+v+qb%a35^jk18$ieoz1h%60fnek$ppyv47a8xzieh*ur'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -120,7 +120,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'spacex/static'),  # Adjust this path accordingly
-    # Other directories for static files, if any
 ]
 
 # Default primary key field type
