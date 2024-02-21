@@ -7,7 +7,10 @@ from .views import (
 
 
 urlpatterns = [
-    path('launch-list/successful/<int:page_number>', successful_launches, name='terms-by-page-successful'),
-    path('launch-list/failed/<int:page_number>', failed_launches, name='terms-by-page-failed'),
-    path('launch-list/upcoming/<int:page_number>', upcoming_launches, name='terms-by-page-upcoming')
+    path('successful/<int:page_number>', successful_launches,
+         name='terms-by-page-successful'),
+    path('failed/<int:page_number>', failed_launches,
+         name='terms-by-page-failed'),
+    path('upcoming/<int:page_number>', upcoming_launches,
+         name='terms-by-page-upcoming')
 ]

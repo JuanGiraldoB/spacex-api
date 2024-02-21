@@ -7,6 +7,7 @@ from .utils import (
     get_paginated_launches
 )
 
+
 def paginate_launches(request, page_number, active_tab='active'):
     PER_PAGE = 5
     DEFAULT_PAGE = 1
@@ -19,9 +20,12 @@ def paginate_launches(request, page_number, active_tab='active'):
     upcoming_page = DEFAULT_PAGE if active_tab != 'upcoming' else page_number
 
     # Paginate the launches
-    page_obj_successful = get_paginated_launches(all_launches['successful'], successful_page, PER_PAGE)
-    page_obj_failed = get_paginated_launches(all_launches['failed'], failed_page, PER_PAGE)
-    page_obj_upcoming = get_paginated_launches(all_launches['upcoming'], upcoming_page, PER_PAGE)
+    page_obj_successful = get_paginated_launches(
+        all_launches['successful'], successful_page, PER_PAGE)
+    page_obj_failed = get_paginated_launches(
+        all_launches['failed'], failed_page, PER_PAGE)
+    page_obj_upcoming = get_paginated_launches(
+        all_launches['upcoming'], upcoming_page, PER_PAGE)
 
     context = {
         'successful': {
