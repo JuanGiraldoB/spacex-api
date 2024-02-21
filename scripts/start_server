@@ -1,10 +1,4 @@
 #!/bin/bash
 cd /home/ec2-user/spacex-api
-
-# Check if Supervisor is already running
-if ! pgrep supervisord > /dev/null; then
-    # If not running, start Supervisor
-    sudo supervisord -c supervisord.conf
-else
-    echo "Supervisor is already running."
-fi
+source env/bin/activate
+sudo python3 manage.py runserver 0.0.0.0:80
