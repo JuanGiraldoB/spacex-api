@@ -1,21 +1,22 @@
 <div class="launch-card">
     {% if launch.links.patch.large %}
-        <img src="{{launch.links.patch.small}}" alt="{{launch.name}}" class="launch-image"/>
+    <img src="{{launch.links.patch.small}}" alt="{{launch.name}}" class="launch-image" />
     {% endif %}
 
     <div>
         <div class="launch-title">{{launch.name}}</div>
-        
         {% if launch.details %}
-            <p>{{launch.details}}</p>
+        <p>{{launch.details}}</p>
         {% endif %}
 
         <p>{{ launch.date_unix|date:"Y-m-d" }}</p>
 
 
         <div class="launch-links">
-            <a href="{{launch.links.reddit.launch}}" target="_blank">Reddit Launch</a>
-            <a href="{{launch.links.article}}" target="_blank">Article</a>
+            {% if launch.links.reddit.launch %}
+            <a href="{{launch.links.reddit.launch}}" target="_blank">Reddit Launch - </a>
+            {% endif %}
+            <a href="{{launch.links.article}}" target="_blank">Article - </a>
             <a href="{{launch.links.wikipedia}}" target="_blank">Wikipedia</a>
         </div>
     </div>
